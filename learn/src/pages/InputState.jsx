@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const App = () => {
+const InputState = () => {
   const [answer, setAnswer] = useState("");
   const [error, setError] = useState(null);
   const [status, setStatus] = useState("typing"); // typing, submiting, success
@@ -69,7 +69,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default InputState;
 
 const submitForm = (answer) => {
   return new Promise((resolve, reject) => {

@@ -1,10 +1,9 @@
 import { useState } from "react";
-
-function App() {
+const StateStructure = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   return (
     <div
-      className="relative h-screen w-screen"
+      className="flex-1"
       onPointerMove={(e) =>
         setPosition({
           x: e.clientX,
@@ -12,16 +11,17 @@ function App() {
         })
       }
     >
+      <h1 className="text-2xl text-center">State Structure</h1>
       <div
-        className={`absolute w-8 h-8 t-1 bg-green-400 rounded-full `}
+        className={`relative w-8 h-8 t-1 bg-green-400 rounded-full `}
         style={{
           transform: `translate(${position.x}px, ${position.y}px)`,
-          left: -15,
-          top: -15,
+          left: -13,
+          top: -80,
         }}
       ></div>
     </div>
   );
-}
+};
 
-export default App;
+export default StateStructure;
