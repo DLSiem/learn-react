@@ -20,6 +20,11 @@ const Header = () => {
               Input-State
             </Link>
           </li>
+          <li>
+            <Link to="/sharing-state" className="hover:underline">
+              Sharing-State
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

@@ -2,6 +2,8 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import StateStructure from "./pages/StateStructure";
 import InputState from "./pages/InputState";
 import Home from "./pages/Home";
+import SharingState from "./pages/SharingState";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
@@ -14,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/state-structure" element={<StateStructure />} />
           <Route path="/input-state" element={<InputState />} />
+          <Route path="/sharing-state" element={<SharingState />} />
         </Routes>
         <Footer />
       </div>
