@@ -2,9 +2,13 @@ import { useState } from "react";
 
 const SharingState = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [text, setText] = useState("");
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
   return (
     <div className="container mx-auto px-4 py-8 max-w-screen-lg">
-      <h1 className="text-xl text-center mt-2 font-semibold text-gray-800 mb-3">
+      <h1 className="text-2xl text-center mt-2 font-bold text-gray-800 mb-3">
         Top Movies and Series
       </h1>
       <Panel
@@ -48,6 +52,15 @@ const SharingState = () => {
           become the Spiritual Leader of the Valley of Peace.
         </p>
       </Panel>
+      <hr />
+      <div>
+        <h2 className="text-2xl text-center mt-2 font-bold text-gray-800 mb-3  ">
+          Syncing Inputs
+        </h2>
+        <Input title="Input One" value={text} onChange={handleTextChange} />
+        <Input title={"Input Two"} value={text} onChange={handleTextChange} />
+      </div>
+      <hr />
     </div>
   );
 };
@@ -68,6 +81,23 @@ const Panel = ({ children, title, isActive, onShow }) => {
           Show Description
         </button>
       )}
+    </div>
+  );
+};
+
+const Input = ({ title, value, onChange }) => {
+  return (
+    <div className="mb-4">
+      <label className="block text-gray-700 text-sm font-bold mb-2">
+        {title}{" "}
+      </label>
+      <input
+        value={value}
+        onChange={onChange}
+        type="text"
+        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Enter your name"
+      />
     </div>
   );
 };
