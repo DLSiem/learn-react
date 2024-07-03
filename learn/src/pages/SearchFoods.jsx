@@ -13,7 +13,7 @@ export default function SearchFood() {
     }
     debounceTimeout.current = setTimeout(() => {
       setDebouncedQuery(query);
-    }, 500);
+    }, 1000);
 
     return () => {
       clearTimeout(debounceTimeout.current);
@@ -35,16 +35,29 @@ export default function SearchFood() {
 }
 
 const SearchBar = ({ value, onChange }) => {
+  const inputRef = useRef(null);
+  const handleSearchClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
   return (
-    <label className="block mb-4">
+    <div className="mb-4 flex">
       <input
         type="text"
         placeholder="Search for food"
         value={value}
         onChange={onChange}
-        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm lg:w-1/2"
+        ref={inputRef}
+        className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm lg:w-1/2"
       />
-    </label>
+      <button
+        onClick={handleSearchClick}
+        className="mt-1 ml-1 px-3 py-2 border rounded-md hover:bg-slate-100 transition duration-500 ease-in-out focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 sm:text-sm"
+      >
+        Search
+      </button>
+    </div>
   );
 };
 
@@ -55,7 +68,7 @@ SearchBar.propTypes = {
 
 const List = ({ items }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 6;
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -127,7 +140,7 @@ const List = ({ items }) => {
             currentPage === 1
               ? "bg-gray-300 cursor-not-allowed"
               : "bg-blue-500 hover:bg-blue-600 text-white"
-          } rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75`}
+          } rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ml-1 mb-1`}
         >
           Previous
         </button>
@@ -137,7 +150,7 @@ const List = ({ items }) => {
         <button
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
-          className={`px-4 py-2 text-sm font-medium ${
+          className={`px-4 py-2 text-sm mr-1 mb-1 font-medium ${
             currentPage === totalPages
               ? "bg-gray-300 cursor-not-allowed"
               : "bg-blue-500 hover:bg-blue-600 text-white"
