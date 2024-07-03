@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Dropdown from "./Dropdown";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,35 +24,19 @@ const Header = () => {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a
-                  href="/"
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Home
-                </a>
-                <a
-                  href="/input-state"
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Input State
-                </a>
-                <a
-                  href="/sharing-state"
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Sharing State
-                </a>
-                <a
-                  href="/state-structure"
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  State Structure
-                </a>
+                <Dropdown />
+
                 <a
                   href="/search-food"
                   className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Search Food
+                </a>
+                <a
+                  href="/pr-state"
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  PR State
                 </a>
               </div>
             </div>
@@ -99,35 +84,19 @@ const Header = () => {
 
       <div className={`${isOpen ? "block" : "hidden"} md:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a
-            href="/"
-            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Home
-          </a>
-          <a
-            href="/input-state"
-            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Input State
-          </a>
-          <a
-            href="/sharing-state"
-            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Sharing State
-          </a>
-          <a
-            href="/state-structure"
-            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            State Structure
-          </a>
+          <Dropdown />
+
           <a
             href="/search-food"
             className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Search Food
+          </a>
+          <a
+            href="/pr-state"
+            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+          >
+            PR State
           </a>
         </div>
       </div>

@@ -59,6 +59,8 @@ const List = ({ items }) => {
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // in alphabetical order
+  items.sort((a, b) => a.name.localeCompare(b.name));
   const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
 
   const totalPages = Math.ceil(items.length / itemsPerPage);

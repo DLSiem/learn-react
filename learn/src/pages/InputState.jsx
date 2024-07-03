@@ -12,15 +12,15 @@ const InputState = () => {
 
   if (status === "success") {
     return (
-      <h1 className=" text-center mt-2">
+      <h1 className="text-center mt-6">
         <span className="text-2xl font-bold text-green-700">Correct!</span>
         <br /> Lima is the city with the billboard.
         <br />
         <button
           onClick={() => window.location.reload()}
-          className="border px-2 mt-2"
+          className="border border-gray-300 bg-white px-4 py-2 mt-4 rounded shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
         >
-          refresh
+          Refresh
         </button>
       </h1>
     );
@@ -43,27 +43,28 @@ const InputState = () => {
   };
 
   return (
-    <div className="text-center">
-      <h1 className="text-xl font-bold">City Quiz</h1>
-      <p className="">
-        In which city is there a billboard which turn air into drinkable water?
+    <div className="container mx-auto p-4 max-w-md">
+      <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+        City Quiz
+      </h1>
+      <p className="text-gray-700 mb-4">
+        In which city is there a billboard that turns air into drinkable water?
       </p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <textarea
           value={answer}
           onChange={handleChange}
-          className="border-2 mt-1"
+          className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
         />
-        <br />
         <button
           disabled={isDisabled}
-          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+          className={`w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
             isDisabled ? "opacity-60 cursor-not-allowed" : ""
           }`}
         >
           Submit
         </button>
-        {error && <p className="text-red-500 mt-2">{error.message}</p>}
+        {error && <p className="text-red-500">{error.message}</p>}
       </form>
     </div>
   );
