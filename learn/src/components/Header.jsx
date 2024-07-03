@@ -47,6 +47,12 @@ const Header = () => {
                 >
                   State Structure
                 </a>
+                <a
+                  href="/search-food"
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Search Food
+                </a>
               </div>
             </div>
           </div>
@@ -116,6 +122,12 @@ const Header = () => {
             className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             State Structure
+          </a>
+          <a
+            href="/search-food"
+            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Search Food
           </a>
         </div>
       </div>

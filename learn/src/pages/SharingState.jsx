@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const SharingState = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -85,6 +86,13 @@ const Panel = ({ children, title, isActive, onShow }) => {
   );
 };
 
+Panel.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  onShow: PropTypes.func.isRequired,
+};
+
 const Input = ({ title, value, onChange }) => {
   return (
     <div className="mb-4">
@@ -100,4 +108,10 @@ const Input = ({ title, value, onChange }) => {
       />
     </div>
   );
+};
+
+Input.propTypes = {
+  title: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
