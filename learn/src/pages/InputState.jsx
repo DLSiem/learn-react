@@ -57,8 +57,8 @@ const InputState = () => {
         <br />
         <button
           disabled={isDisabled}
-          className={`bg-sky-500 px-2 p-1 text-white hover:cursor-pointer ${
-            isDisabled ? "opacity-60" : ""
+          className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+            isDisabled ? "opacity-60 cursor-not-allowed" : ""
           }`}
         >
           Submit
