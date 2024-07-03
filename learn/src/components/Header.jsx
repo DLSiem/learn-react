@@ -38,6 +38,12 @@ const Header = () => {
                 >
                   PR State
                 </a>
+                <a
+                  href="/reducer"
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Reducer
+                </a>
               </div>
             </div>
           </div>
@@ -97,6 +103,12 @@ const Header = () => {
             className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             PR State
+          </a>
+          <a
+            href="/reducer"
+            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Reducer
           </a>
         </div>
       </div>
