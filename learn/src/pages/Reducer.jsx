@@ -1,12 +1,11 @@
-import { useReducer } from "react";
+import { useImmerReducer } from "use-immer";
 import { taskReducer } from "../reducers/taskReducers";
 import AddTask from "../components/AddTask";
 import TaskList from "../components/TaskList";
 
 const Reducer = () => {
-  const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
-  // sort tasks by done
-  tasks.sort((a, b) => (a.done === b.done ? 0 : a.done ? 1 : -1));
+  const [tasks, dispatch] = useImmerReducer(taskReducer, initialTasks);
+
   const handleAddTask = (text) => {
     dispatch({
       type: "added",

@@ -1,26 +1,20 @@
-export function taskReducer(tasks, action) {
+export function taskReducer(draft, action) {
   switch (action.type) {
     case "added": {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false,
-        },
-      ];
+      draft.push({
+        id: action.id,
+        text: action.text,
+        completed: false,
+      });
+      break;
     }
     case "deleted": {
-      return tasks.filter((task) => task.id !== action.id);
+      return draft.filter((t) => t.id !== action.id);
     }
     case "changed": {
-      return tasks.map((t) => {
-        if (t.id === action.task.id) {
-          return action.task;
-        } else {
-          return t;
-        }
-      });
+      const index = draft.findIndex((t) => t.id === action.task.id);
+      draft[index] = action.task;
+      break;
     }
     default: {
       throw Error("Unknown action : " + action.type);
