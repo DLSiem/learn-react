@@ -54,13 +54,38 @@ SearchBar.propTypes = {
 };
 
 const List = ({ items }) => {
-  List.propTypes = {
-    items: PropTypes.array.isRequired,
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+
+  if (items.length === 0) {
+    return <div className="text-center">No items found</div>;
+  }
+
+  if (currentPage > totalPages) {
+    setCurrentPage(1);
+  }
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-300">
+      <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
             <th
@@ -78,18 +103,51 @@ const List = ({ items }) => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {items.map((food) => (
+          {currentItems.map((food) => (
             <tr key={food.id}>
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-600">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 {food.name}
               </td>
-              <td className="px-6 py-4 text-sm text-gray-900">
+              <td className="px-6 py-4  text-sm text-gray-900">
                 {food.description}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {/* Pagination controls */}
+      <div className="mt-4 flex justify-between">
+        <button
+          onClick={handlePrevPage}
+          disabled={currentPage === 1}
+          className={`px-4 py-2 text-sm font-medium ${
+            currentPage === 1
+              ? "bg-gray-300 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-600 text-white"
+          } rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75`}
+        >
+          Previous
+        </button>
+        <div className="text-sm text-gray-700">
+          Page {currentPage} of {totalPages}
+        </div>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className={`px-4 py-2 text-sm font-medium ${
+            currentPage === totalPages
+              ? "bg-gray-300 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-600 text-white"
+          } rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75`}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
+};
+
+List.propTypes = {
+  items: PropTypes.array.isRequired,
 };
