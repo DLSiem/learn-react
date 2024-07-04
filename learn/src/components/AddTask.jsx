@@ -1,8 +1,9 @@
-import { useState } from "react";
-import propTypes from "prop-types";
+import { useState, useContext } from "react";
+import { TaskDispatchContext } from "../contexts/TaskContext";
 
-export default function AddTask({ onAddTask }) {
+export default function AddTask() {
   const [text, setText] = useState("");
+  const dispatch = useContext(TaskDispatchContext);
 
   return (
     <div className="mb-4">
@@ -18,7 +19,11 @@ export default function AddTask({ onAddTask }) {
           onClick={(e) => {
             e.preventDefault();
             setText("");
-            onAddTask(text);
+            dispatch({
+              type: "added",
+              id: nextId++,
+              text: text,
+            });
           }}
           disabled={!text.trim()}
           className={`bg-blue-500 text-white p-2 whitespace-nowrap rounded font-semibold hover:bg-blue-700 ${
@@ -32,6 +37,4 @@ export default function AddTask({ onAddTask }) {
   );
 }
 
-AddTask.propTypes = {
-  onAddTask: propTypes.func.isRequired,
-};
+let nextId = 3;
