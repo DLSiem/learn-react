@@ -6,6 +6,7 @@ import SharingState from "./pages/SharingState";
 import SearchFood from "./pages/SearchFoods";
 import PRState from "./pages/PRState";
 import Reducer from "./pages/Reducer";
+import Context from "./pages/Context";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/search-food" element={<SearchFood />} />
           <Route path="/pr-state" element={<PRState />} />
           <Route path="/reducer" element={<Reducer />} />
+          <Route path="/context" element={<Context />} />
         </Routes>
         <Footer />
       </div>

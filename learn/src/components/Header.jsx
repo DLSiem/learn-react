@@ -44,6 +44,12 @@ const Header = () => {
                 >
                   Reducer
                 </a>
+                <a
+                  href="/context"
+                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Context
+                </a>
               </div>
             </div>
           </div>
@@ -109,6 +115,12 @@ const Header = () => {
             className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
           >
             Reducer
+          </a>
+          <a
+            href="/context"
+            className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Context
           </a>
         </div>
       </div>
