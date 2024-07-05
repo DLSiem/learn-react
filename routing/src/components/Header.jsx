@@ -10,9 +10,7 @@ const Header = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive
-                  ? "font-semibold underline"
-                  : "hover:font-semibold hover:underline transition-all"
+                isActive ? "underline" : "hover:underline"
               }
             >
               Home
@@ -22,9 +20,7 @@ const Header = () => {
             <NavLink
               to="/products"
               className={({ isActive }) =>
-                isActive
-                  ? "font-semibold underline"
-                  : "hover:font-semibold hover:underline transition-all"
+                isActive ? "underline" : "hover:underline"
               }
             >
               Products
