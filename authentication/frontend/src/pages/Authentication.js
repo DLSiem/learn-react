@@ -8,17 +8,13 @@ function AuthenticationPage() {
 export default AuthenticationPage;
 
 export async function action({ request }) {
-  console.log("action");
   const searchParams = new URL(request.url).searchParams;
   const mode = searchParams.get("mode");
-  console.log(mode);
 
   if (mode !== "login" && mode !== "signup") {
     throw json({ message: "Invalid Routes" });
   }
   const data = await request.formData();
-
-  console.log("data", data);
 
   const authData = {
     email: data.get("email"),
@@ -32,8 +28,6 @@ export async function action({ request }) {
     },
     body: JSON.stringify(authData),
   });
-
-  console.log("response ", response);
 
   if (response.status === 422 || response.status === 401) {
     return response;
