@@ -24,6 +24,9 @@ export const action = async ({ request, params }) => {
     },
     body: JSON.stringify(eventData),
   });
+  if (response.status === 422) {
+    return response;
+  }
   if (!response.ok) {
     throw json({ massage: "Could not save event" }, { status: 500 });
   }
