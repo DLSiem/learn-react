@@ -14,13 +14,13 @@ function AuthForm() {
   const navigation = useNavigation();
 
   const [searchParams] = useSearchParams();
-  const isLogin = searchParams.get("mode") === "login";
+  const isSignup = searchParams.get("mode") === "signin";
   const isSubmitting = navigation.state === "submitting";
 
   return (
     <>
       <Form method="post" className={classes.form}>
-        <h1>{isLogin ? "Log in" : "Sign In"}</h1>
+        <h1>{isSignup ? "Sign Out" : "Log In"}</h1>
         {data && data.errors && (
           <ul>
             {Object.values(data.errors).map((err) => (
@@ -37,8 +37,8 @@ function AuthForm() {
           <input id="password" type="password" name="password" required />
         </p>
         <div className={classes.actions}>
-          <Link to={`?mode=${isLogin ? "signup" : "login"}`}>
-            <p>{isLogin ? "Sign Up" : "Login"}</p>
+          <Link to={`?mode=${isSignup ? "login" : "signin"}`}>
+            <p>{isSignup ? "Log In" : "Sign Up"}</p>
           </Link>
           <button disabled={isSubmitting}>
             {isSubmitting ? "Submitting..." : "Save"}
