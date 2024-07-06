@@ -3,12 +3,13 @@ import { json, redirect } from "react-router-dom";
 import EventForm from "../components/EventForm";
 
 const NewEventPage = () => {
-  return <EventForm />;
+  return <EventForm method="post" />;
 };
 
 export default NewEventPage;
 
 export const action = async ({ request, params }) => {
+  const method = request.method;
   const data = await request.formData();
 
   const eventData = {
@@ -17,8 +18,14 @@ export const action = async ({ request, params }) => {
     date: data.get("date"),
     description: data.get("description"),
   };
-  const response = await fetch("http://localhost:8080/events", {
-    method: "POST",
+  let url = "http://localhost:8080/events";
+  if (method === "PATCH") {
+    const eventId = params.eventId;
+    url = "http://localhost:8080/events/" + eventId;
+  }
+
+  const response = await fetch(url, {
+    method: method,
     headers: {
       "Content-Type": "application/json",
     },
