@@ -5,7 +5,6 @@ import EventsList from "../components/EventsList";
 
 const EventsPage = () => {
   const { events } = useLoaderData();
-  console.log(events);
   return (
     <Suspense fallback={<p style={{ textAlign: "center" }}>Loading.....</p>}>
       <Await resolve={events}>
