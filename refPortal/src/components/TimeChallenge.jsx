@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import ResultModal from "./ResultModal";
 
 const TimeChallenge = ({ title, targetTime }) => {
   const timer = useRef();
+  const dialog = useRef();
   const [timerExpired, setTimerExpired] = useState(false);
   const [start, setStart] = useState(false);
 
@@ -14,18 +15,26 @@ const TimeChallenge = ({ title, targetTime }) => {
       setStart(false);
     }, targetTime * 1000);
   };
+
   const handleStop = () => {
     clearTimeout(timer.current);
     setStart(false);
     setTimerExpired(false);
   };
+
+  useEffect(() => {
+    if (timerExpired && dialog.current) {
+      dialog.current.showModal();
+    }
+  }, [timerExpired]);
+
   return (
     <>
-      {timerExpired && <ResultModal result="lost!" targetTime={targetTime} />}
+      <ResultModal ref={dialog} result="lost!" targetTime={targetTime} />
       <section className="challenge">
         <h2>{title}</h2>
         <p className="challenge-time">
-          {targetTime} seconds{targetTime > 1 ? "" : "s"}
+          {targetTime} second{targetTime > 1 ? "s" : ""}
         </p>
 
         <p>
