@@ -1,28 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 export default function Player() {
-  const [submit, setSubmit] = useState(false);
+  const playerName = useRef();
   const [name, setName] = useState("");
-
-  const handleChange = (e) => {
-    setSubmit(false);
-    setName(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmit(true);
+    setName(playerName.current.value);
   };
 
   return (
     <section id="player">
-      <h2>Welcome {submit ? name : ""}</h2>
-      <p>
-        <form onSubmit={handleSubmit}>
-          <input value={name} onChange={handleChange} type="text" />
-          <button>Set Name</button>
-        </form>
-      </p>
+      <h2>Welcome {name ?? ""}</h2>
+      <form onSubmit={handleSubmit}>
+        <p>
+          <input ref={playerName} type="text" />
+          <button onClick={handleSubmit}>Set Name</button>
+        </p>
+      </form>
     </section>
   );
 }
