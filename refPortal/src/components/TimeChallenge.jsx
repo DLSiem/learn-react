@@ -44,7 +44,7 @@ const TimeChallenge = ({ title, targetTime }) => {
 
         <p>
           <button onClick={timeIsActive ? handleStop : handleStart}>
-            {timeIsActive ? "Stop" : "Start Challenge"}
+            {timeIsActive ? "Stop" : "Start"} Challenge
           </button>
         </p>
         <p className={timeIsActive ? "active" : ""}>
