@@ -17,7 +17,7 @@ const ResultModal = forwardRef(function ResultModal(
   const score = Math.floor((timeLeft / targetTime) * 100);
 
   return createPortal(
-    <dialog ref={dialog} className="result-modal" onClick={reset}>
+    <dialog ref={dialog} className="result-modal" onClose={reset}>
       {lost ? <h2>You Lost!</h2> : <h3>You Won!</h3>}
       {!lost && <h2>Your score is {score}</h2>}
       <p>

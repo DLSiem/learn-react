@@ -6,9 +6,9 @@ function App() {
     <>
       <Player />
       <div id="challenges">
-        <TimeChallenge title="Easy" targetTime={10} />
-        <TimeChallenge title="Medium" targetTime={5} />
-        <TimeChallenge title="Hard" targetTime={3} />
+        <TimeChallenge title="Easy" targetTime={4} />
+        <TimeChallenge title="Medium" targetTime={3} />
+        <TimeChallenge title="Hard" targetTime={2} />
       </div>
     </>
   );
