@@ -24,7 +24,7 @@ const TimeChallenge = ({ title, targetTime }) => {
 
   useEffect(() => {
     if (timerExpired && dialog.current) {
-      dialog.current.showModal();
+      dialog.current.open();
     }
   }, [timerExpired]);
 
